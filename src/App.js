@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Navbar from './Components/Navbar'
+import Cart from './Pages/Cart';
+import Checkout from './Pages/Checkout';
+import LandingPage from './Pages/LandingPage';
+import Login from './Pages/Login';
+import TransactionHistory from './Pages/transactionhistory';
+
+// css
+import './Supports/Stylesheets/anything.css'
+
+export default class App extends React.Component{
+  render(){
+    return(
+      <>
+        <BrowserRouter>
+        <Navbar />
+          <Switch>
+            <Route exact path ='/' component= {LandingPage} />
+            <Route path ='/login' component={Login} />
+            <Route path ='/cart' component={Cart} />
+            <Route path ='/checkout' component={Checkout} />
+            <Route path ='/transactionhistory' component={TransactionHistory} />
+          </Switch>
+        </BrowserRouter>
+      </>
+    )
+  }
 }
-
-export default App;
